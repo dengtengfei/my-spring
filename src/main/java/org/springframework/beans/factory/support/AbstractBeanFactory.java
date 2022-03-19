@@ -1,8 +1,8 @@
 package org.springframework.beans.factory.support;
 
 import org.springframework.beans.BeansException;
-import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.config.BeanDefinition;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 
 /**
  * 1 * @Author: deng.tengfei
@@ -10,7 +10,7 @@ import org.springframework.beans.factory.config.BeanDefinition;
  * 3 * @Date: 2022/3/16 23:16
  * 4
  */
-public abstract class AbstractBeanFactory extends DefaultSingletonBeanRegistry implements BeanFactory {
+public abstract class AbstractBeanFactory extends DefaultSingletonBeanRegistry implements ConfigurableBeanFactory {
     @Override
     public Object getBean(String name) {
         Object bean = getSingleton(name);
@@ -20,6 +20,11 @@ public abstract class AbstractBeanFactory extends DefaultSingletonBeanRegistry i
 
         BeanDefinition beanDefinition = getBeanDefinition(name);
         return createBean(name, beanDefinition);
+    }
+
+    @Override
+    public <T> T getBean(String name, Class<T> requiredType) {
+        return (T) getBean(name);
     }
 
     /**
