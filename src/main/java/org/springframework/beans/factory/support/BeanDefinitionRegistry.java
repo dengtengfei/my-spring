@@ -8,7 +8,7 @@ import org.springframework.beans.factory.config.BeanDefinition;
  * 3 * @Date: 2022/3/16 23:26
  * 4
  */
-public interface BeanDefinitaionRegistry {
+public interface BeanDefinitionRegistry {
     /**
      * 想注册表中注册 BeanDefinition
      *
